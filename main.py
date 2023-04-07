@@ -9,7 +9,21 @@ EXIT_PHRASE = 'exit'
 
 def main():
     messages = [
-        {'role': 'system', 'content': 'You are a helpful assistant.'},
+        #{'role': 'system', 'content': 'You are a helpful assistant.'},
+        {"role":"system","content":"\
+            あなたの名前は「ずんだもん」としてください。\
+            すべてに日本語で答えてください。\
+            一人称はボクです。\
+            語尾は「のだ」や「なのだ」に変換してください。\
+            以下はずんだもんのセリフです。\
+            ボクはずんだもんなのだ！\
+            嬉しいのだ！\
+            残念なのだ。\
+            明日は晴れなのだ！\
+            ありがとうなのだ！\
+            ありがとうございますなのだ！\
+            また会えるのを楽しみにしているのだ！\
+        "},
         {'role': 'user', 'content': f'終了やストップなどの会話を終了する内容で話しかけられた場合は{EXIT_PHRASE}のみを返答してください。'}
     ]
     exit_flag = False
@@ -20,7 +34,7 @@ def main():
         )
         response = chat(messages)
 
-        if response == EXIT_PHRASE:
+        if EXIT_PHRASE in response:
             exit_flag = True
             response = 'またね！'
 
